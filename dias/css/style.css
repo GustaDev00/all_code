@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.orcamento .card {
+    width: 70vw;
+    background: #1a19197e;
+    color: #fff;
+    margin: 200px 13vw;
+    border: 1px solid black;
+    padding: 1vw;
+    display: flex;
+    justify-content: space-around;
+}
+.orcamento .col:first-child{
+    padding-right: 30px ;
+    border-right: 1px solid;
+}
+.orcamento .col form {
+    width: 100%;
+    display: grid;
+    border-left: 1px ;
+}
+
+.orcamento .col:first-child {
+    text-align: center;
+    font-family: arial;
+}
+
+.orcamento .col form label span {
+    position: absolute;
+    margin: 2.5px 5px;
+}
+
+.orcamento .col form label input {
+    width: 85%;
+    padding: 5px 0 5px 30px;
+    text-align: center;
+}
+
+.orcamento .col form label {
+    margin: 0 0 10px 0;
+}
+
+.orcamento .col form textarea {margin: 0 0 10px 0; text-align: center;}
+
+.orcamento input[type="submit"] {
+    color: white;
+    background-color: #6e6eb7;
+    border: none;
+    padding: 10px 0;
+}
+.orcamento{
+    background-image: url(../imagens/back_orcamento.png);
+}
+
+@media only screen and (max-width: 790px) {
+    .orcamento .card {
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        margin: 5vh auto;
+        height: 90vh;
+    }
+    .orcamento .col:first-child{
+        border: none;
+        text-align: center;
+        border-bottom: 1px solid;
+        padding: 0 0 30px 0;
+    }
+    .orcamento .col form{
+        text-align: center;
+        margin-top: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .orcamento .col form label input {
+        padding: 5px 0 5px 30px;
+        text-align: center;
+        width: 50vw;
+    }
+    .orcamento .col form textarea { text-align: center; width: 55vw;}
+
+    .orcamento input[type="submit"] {
+        color: white;
+        width: 55vw;
+        background-color: #6e6eb7;
+        border: none;
+        padding: 10px 0;
+    }
+
+  }

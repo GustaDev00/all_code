@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <style>
+        #demo{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <span id="demo"></span>
+    <br>
+    <!-- <button onclick="this.innerHTML = Date()">The time is?</button> -->
+    <script>
+        var txt = "Texto de teste para methods de string, sabe de nada";
+        var array = ["teste", "number", 10];
+        /*
+        pop() - função que remove ultimo elemento do array
+        push() - função que adiciona um novo elemento no array, mas eu prefiro usar somente [] que ja resolve
+        shift() - Remove o primeiro elemento e o retorna a string como "deslocada"
+        unshift() - método adiciona um novo elemento a uma matriz (no início) e "remove" os elementos mais antigos
+        O sort() - método classifica uma matriz em ordem alfabética
+        O reverse() - método inverte os elementos em uma matriz.
+        Array.forEach () - método chama uma função (uma função de retorno de chamada) uma vez para cada elemento da matriz
+        .forEach() .map .filter .every() .some() .find() pode receber 3 parametros sendo eles:
+            O valor do item
+
+            O índice do item
+
+            A própria matriz
+
+         map() - método cria uma nova matriz executando uma função em cada elemento da matriz. e possui os mesmos parametros do exemplo acima forEach
+            
+        .reduce() recebe os mesmos parameros, porem tem um novo que é o total, que seria o ultimo valor enviado
+
+        .indexOf() se utilizado em um array retorna a posição
+        */
+        document.write("<br>");
+        hello = () => {
+         document.getElementById("demo").innerHTML += "asd";
+        }
+
+        window.addEventListener("load", hello);
+
+        document.write("split() - Função que quebra a string: ");
+        document.write(txt.split(",")[0]);
+        
+        document.write("<br>");
+        
+        document.write("charAt() - método retorna o caractere em um índice especificado (posição) em uma string: ");
+        document.write(txt.charAt(0));
+
+        document.write("<br>");
+        
+        document.write("O charCodeAt() método retorna o unicode do caractere em um índice especificado em uma string: ");
+        document.write(txt.charCodeAt(0));
+      
+      
+        // Define an object
+        var obj = {counter:0};
+
+        // Define Setters and Getters
+        Object.defineProperty(obj, "reset", {
+        get : function () {this.counter = 0;}
+        });
+        Object.defineProperty(obj, "increment", {
+        get : function () {this.counter++;}
+        });
+        Object.defineProperty(obj, "decrement", {
+        get : function () {this.counter--;}
+        });
+        Object.defineProperty(obj, "add", {
+        set : function (value) {this.counter += value;}
+        });
+        Object.defineProperty(obj, "subtract", {
+        set : function (value) {this.counter -= value;}
+        });
+
+        // Play with counter:
+        obj.reset;
+        obj.add = 5;
+        obj.subtract = 1;
+        obj.increment;
+        obj.decrement;
+        document.getElementById("demo").innerHTML = obj.counter;
+
+
+        const x = (x, y) => { return x * y };
+
+
+
+                function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+        }
+
+        let myPromise = new Promise(function(myResolve, myReject) {
+        let req = new XMLHttpRequest();
+        req.open('GET', "mycar.html");
+        req.onload = function() {
+            if (req.status == 200) {
+            myResolve(req.response);
+            } else {
+            myReject("File not Found");
+            }
+        };
+        req.send();
+        });
+
+        myPromise.then(
+        function(value) {myDisplayer(value);},
+        function(error) {myDisplayer(error);}
+        );
+
+        localStorage.setItem("name", "John Doe");
+        localStorage.getItem("name");
+
+        var openAlert = () => {
+    	    sessionStorage.setItem("open", true);
+             alert("uauuuuuu");
+        }
+
+        document.addEventListener('mouseleave', function(){
+            sessionStorage.getItem("open") == null ?openAlert(): openAlert = undefined;
+        });
+
+        document.body.scrollHeight;
+        setInterval(function(){
+            if(down <= document.body.scrollHeight){
+                window.scroll(0, ++down); 
+            }else{
+                continue;
+            }
+        }, 1000);
+
+        var down = 0;
+        while(down < 100){
+            window.scroll(0, ++down);
+        }
+
+        var down = 0;
+        while(down < 100){
+            setInterval(function(){ window.scroll(0, ++down); }, 3000);
+        }
+        
+        
+    </script>
+
+</body>
+</html>

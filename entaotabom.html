@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tapa na cara sei que vai doer</title>
+    <style>
+      #start{
+        border: none;
+        background: none;
+        color: blue;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body id="fundo">
+    <p id="escreaqui"></p>
+    <button id="start" onclick="start()">Nunca mais eu vou Dormir</button>
+    <script>
+    const VamosComecarbtn = document.querySelector('#start');
+		const escreaqui = document.querySelector('#escreaqui');
+		const fundo = document.querySelector('#fundo');
+		//Função que starta o reconhecimento de voz
+        function start() {
+          const recognition = new webkitSpeechRecognition();
+          recognition.interimResults = true;
+          recognition.lang = "pt-br";
+          recognition.continuous = true;
+          recognition.start();
+          // Evento que vai começar quando eu falar
+          recognition.onresult = function(event) {
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+              if (event.results[i].isFinal) {
+                // Pego a fala em texto hehehehe
+                const content = event.results[i][0].transcript.trim();
+				escreaqui.textContent = content;
+				fundo.style.background = content;
+              }
+            }
+          };
+		}
+		function stop(){
+
+		}
+
+    </script>
+  </body>
+</html>

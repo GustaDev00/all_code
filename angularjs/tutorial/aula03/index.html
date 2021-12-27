@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="PhoneBook">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.css">
+    <style>
+        .jumbotron{
+            width: 400px;
+            text-align: center;
+            margin: 20px auto;
+        }
+        table{
+            margin: 10px 0 0 0;
+        }
+        .form-control{
+            margin-bottom: 5px;
+        }
+    </style>
+    <script src="../../angular-1.8.0/angular.js"></script>
+    <script>
+        var appModule = angular.module("PhoneBook", []);
+        appModule.controller("PhoneBookController", function($scope){
+            $scope.app = "Lista Telefonica";
+            $scope.contacts = [
+                {
+                    name: "pedro",
+                    tel: "999999999"
+                },
+                {
+                    name: "Ana",
+                    tel: "999999910"
+                },
+                {
+                    name: "Gustavo",
+                    tel: "999999950"
+                },
+            ];
+            $scope.operators = [
+                {name: "oi", cod: 14},
+                {name: "vivo", cod: 15},
+                {name: "claro", cod: 41}
+            ]
+            $scope.AddContact = function(NewContacts){
+                $scope.contacts.push(angular.copy(NewContacts));
+            }
+        });
+    </script>
+</head>
+<body ng-controller="PhoneBookController">
+    <div class="jumbotron">
+        <h3 ng-bind="app"></h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Telephone</th>
+                <th>operadora</th>
+            </tr>
+            <tr ng-repeat="value in contacts">
+                <td>{{value.name}}</td>
+                <td>{{value.tel}}</td>
+                <td>{{value.operator.name}}</td>
+            </tr>
+        </table>
+        <hr>
+        {{contact}}
+        <input type="text" class="form-control" ng-model="contact.name" placeholder="Nome">
+        <input type="text" class="form-control" ng-model="contact.tel" placeholder="Telefone">
+        <select class="form-control" ng-model="contact.operator" ng-options="operator.name for operator in operators">
+            <option value="">Selecione uma operadora</option>
+        </select>
+        <button class="btn btn-block btn-primary" 
+        ng-click="AddContact(contact)" 
+        ng-disabled="!contact.name || !contact.tel">ADD Contact</button>
+
+    </div>
+</body>
+</html>

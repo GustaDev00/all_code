@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="PhoneBook">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.css">
+    <style>
+        .jumbotron{
+            width: 400px;
+            text-align: center;
+            margin: 20px auto;
+        }
+        table{
+            margin: 10px 0 0 0;
+        }
+        .form-control{
+            margin-bottom: 5px;
+        }
+    </style>
+    <script src="../../angular-1.8.0/angular.js"></script>
+    <script>
+        var appModule = angular.module("PhoneBook", []);
+        appModule.controller("PhoneBookController", function($scope){
+            $scope.app = "Lista Telefonica";
+            $scope.contacts = [
+                {
+                    name: "pedro",
+                    tel: "999999999"
+                },
+                {
+                    name: "Ana",
+                    tel: "999999910"
+                },
+                {
+                    name: "Gustavo",
+                    tel: "999999950"
+                },
+            ];
+            $scope.AddContact = function(NewContacts){
+
+                $scope.contacts.push(angular.copy(NewContacts));
+
+                // Utilizar o angular.copy para na hora que adicionar no array ele não ficar editando depois
+                // também poderia ser feito da seguinte forma:
+
+                // $scope.contacts.push(NewContacts);
+                // delete $scope.NewContacts;
+            }
+        });
+    </script>
+</head>
+<body ng-controller="PhoneBookController">
+    <div class="jumbotron">
+        <h3 ng-bind="app"></h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Telephone</th>
+            </tr>
+            <tr ng-repeat="value in contacts">
+                <td>{{value.name}}</td>
+                <td>{{value.tel}}</td>
+            </tr>
+
+            <!-- Outra opção é: -->
+            <!-- Laço de repetição duplo, percorrendo todos os value e keys -->
+            <!-- <tr ng-repeat="value in contacts">
+                <td ng-repeat="(key, value) in value">
+                    {{value}}
+                </td>
+            </tr> -->
+        </table>
+        <hr>
+        <input type="text" class="form-control" ng-model="NewContacts.name" placeholder="Nome">
+        <input type="text" class="form-control" ng-model="NewContacts.tel" placeholder="Telefone">
+        <button class="btn btn-block btn-primary" ng-click="AddContact(NewContacts)">ADD Contact</button>
+        {{NewContacts}}
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Gustavo Pontes",
+        "username": "Gusta",
+        "email": "gustavo@gmail.com"
+    },
+    {
+        "id": 2,
+        "name": "Emerson Guilherme",
+        "username": "Arrumadinho",
+        "email": "emerson@gmail.com"
+    },
+    {
+        "id": 3,
+        "name": "Kaique Fernandes",
+        "username": "Zé droguinha",
+        "email": "kaique@gmail.com"
+    }
+]
